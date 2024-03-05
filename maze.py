@@ -64,7 +64,7 @@ class Maze:
         for blank in blank:
             list = []
             list.append(visited)
-            
+            pass
 
         
 
