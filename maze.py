@@ -106,6 +106,10 @@ class Maze:
                 # recursively visit next
                 self._break_walls_r(next_index[0], next_index[1])
 
+    def _reset_cells_visited(self):
+        for row in self._cells:
+            for cell in row:
+                cell.visited = False
             
 
         
