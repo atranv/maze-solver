@@ -17,6 +17,8 @@ def main():
 
     win.wait_for_close()
 
+    maze.solve()
+
 
 main()
 
