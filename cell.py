@@ -1,4 +1,4 @@
-from graphics import Line, Point
+from graphics import Line, Point, Window
 
 class Cell:
     def __init__(self, win):
@@ -45,17 +45,41 @@ class Cell:
             self._win.draw_line(line, 'white')
     
     def draw_move(self, to_cell, undo=False):
-        avg_x = (self._x1 + self._x2) / 2
-        avg_y = (self._y1 + self._y2) / 2
+        x_mid = (self._x1 + self._x2) / 2
+        y_mid = (self._y1 + self._y2) / 2
 
-        avg_to_x = (to_cell._x1 + to_cell._x2) / 2
-        avg_to_y = (to_cell._y1 + to_cell._y2) / 2
+        to_x_mid = (to_cell._x1 + to_cell._x2) / 2
+        to_y_mid = (to_cell._y1 + to_cell._y2) / 2
 
-        if undo == False:
-            line = Line(Point(avg_x, avg_y), Point(avg_to_x, avg_to_y))
-            self._win.draw_line(line, 'red')
-        else:
-            line = Line(Point(avg_x, avg_y), Point(avg_to_x, avg_to_y))
-            self._win.draw_line(line, 'gray')
+        fill_color = "red"
+        if undo:
+            fill_color = "gray"
 
+        # moving left
+        if self._x1 > to_cell._x1:
+            line = Line(Point(self._x1, y_mid), Point(x_mid, y_mid))
+            self._win.draw_line(line, fill_color)
+            line = Line(Point(to_x_mid, to_y_mid), Point(to_cell._x2, to_y_mid))
+            self._win.draw_line(line, fill_color)
+
+        # moving right
+        elif self._x1 < to_cell._x1:
+            line = Line(Point(x_mid, y_mid), Point(self._x2, y_mid))
+            self._win.draw_line(line, fill_color)
+            line = Line(Point(to_cell._x1, to_y_mid), Point(to_x_mid, to_y_mid))
+            self._win.draw_line(line, fill_color)
+
+        # moving up
+        elif self._y1 > to_cell._y1:
+            line = Line(Point(x_mid, y_mid), Point(x_mid, self._y1))
+            self._win.draw_line(line, fill_color)
+            line = Line(Point(to_x_mid, to_cell._y2), Point(to_x_mid, to_y_mid))
+            self._win.draw_line(line, fill_color)
+
+        # moving down
+        elif self._y1 < to_cell._y1:
+            line = Line(Point(x_mid, y_mid), Point(x_mid, self._y2))
+            self._win.draw_line(line, fill_color)
+            line = Line(Point(to_x_mid, to_y_mid), Point(to_x_mid, to_cell._y1))
+            self._win.draw_line(line, fill_color)
 
