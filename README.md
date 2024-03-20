@@ -21,7 +21,8 @@ Configuration
 
 Examples
   Here's an example of a generated maze and its solution:
-  *ATTACH SCREENSHOT*
+<img width="667" alt="Screenshot 2024-03-20 at 5 58 05 PM" src="https://github.com/atranv/maze-solver/assets/38709988/36c1e051-19d0-489c-821e-56ed425e5a00">
+
 
 
 Contributing
