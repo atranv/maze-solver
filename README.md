@@ -1,4 +1,4 @@
-Maze Solver
+<h1> Maze Solver </h1> 
 
 This Python program generates and solves mazes using a recursive backtracking algorithm. It provides a visual representation of the maze generation and solving process using a simple GUI.
 
